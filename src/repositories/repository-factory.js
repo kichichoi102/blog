@@ -25,6 +25,11 @@ const repositories = {
 // a new repo everytime its called, rather call from instances
 const instances = {}
 
+/**
+ * Create factory given endpoint name, getter
+ * @param {*} typeName aka endpoint name
+ * @returns {Object} repo object
+ */
 function createFactory (typeName) {
     if (instances[typeName] == null || instances[typeName] == undefined) {
         if (!(typeName in repositories)) {
@@ -35,9 +40,8 @@ function createFactory (typeName) {
         const repo = new BaseRepository(endpoint)
 
         instances[typeName] = repo
-
-        return instances[typeName]
     }
+    return instances[typeName]
 }
 
 export default {
