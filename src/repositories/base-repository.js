@@ -2,17 +2,14 @@ import { createClient } from './client.js';
 
 /**
  * Creates Base repo
- * @param {string} controllerPath url
  * @param {string} endpoint endpoint
  */
 class BaseRepository {
   /**
    * Base repo constructor
-   * @param {string} controllerPath url
    * @param {string} endpoint endpoint
    */
-  constructor(controllerPath, endpoint, primaryKeyField) {
-    this.controllerPath = controllerPath;
+  constructor(endpoint) {
     this.endpoint = endpoint;
     this.client = null;
   }
@@ -36,7 +33,7 @@ class BaseRepository {
     this._loadClient();
 
     try {
-      const urlString = this.controllerPath + '/' + this.endpoint;
+      const urlString = this.endpoint;
       const res = await this.client.get(urlString);
       return res.data;
     } catch (error) {
@@ -54,7 +51,7 @@ class BaseRepository {
     this._loadClient();
 
     try {
-      const urlString = this.controllerPath + '/' + this.endpoint + '/' + id;
+      const urlString = this.endpoint + '/' + id;
       const res = this.client.get(urlString);
       return res.data;
     } catch (error) {
@@ -71,7 +68,7 @@ class BaseRepository {
     this._loadClient();
 
     try {
-      const urlString = this.controllerPath + '/' + this.endpoint;
+      const urlString = this.endpoint;
       const res = await this.client.post(urlString, payload);
       return res;
     } catch (error) {
@@ -89,7 +86,7 @@ class BaseRepository {
     this._loadClient();
 
     try {
-      const urlString = this.controllerPath + '/' + this.endpoint + '/' + id;
+      const urlString = this.endpoint + '/' + id;
       const res = this.client.patch(urlString, payload);
       return res;
     } catch (error) {
@@ -106,7 +103,7 @@ class BaseRepository {
     this._loadClient();
 
     try {
-      const urlString = this.controllerPath + '/' + this.endpoint + '/' + id;
+      const urlString = this.endpoint + '/' + id;
       const res = this.client.delete(urlString);
       return res;
     } catch (error) {
