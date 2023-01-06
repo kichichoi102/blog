@@ -8,7 +8,7 @@ import rootReducer from './reducer';
  * @param {*} preloadedState
  * @return {store} obj
  */
-export default function configureAppStore(preloadedState) {
+export default function configureAppStore (preloadedState) {
   const store = configureStore({
     reducer: rootReducer,
     middleware: [loggerMiddleware, ...getDefaultMiddleware()],

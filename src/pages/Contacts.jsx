@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * @return { jsx }
  */
-export function Contacts() {
+export function Contacts () {
   return (
     <p>Contacts</p>
   );

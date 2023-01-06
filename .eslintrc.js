@@ -20,4 +20,9 @@ module.exports = {
   'rules': {
     'object-curly-spacing': ['error', 'always'],
   },
+  "space-before-function-paren": ["error", {
+    "anonymous": "never",
+    "named": "never",
+    "asyncArrow": "never"
+}],
 };

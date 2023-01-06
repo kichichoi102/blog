@@ -5,7 +5,7 @@ import React from 'react';
 /**
  * @return {Routes}
  */
-function AppRoutes() {
+function AppRoutes () {
   return (
     <BrowserRouter>
       <Routes>
