@@ -1,7 +1,6 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from 'react';
-import TopNavBar from '../components/TopNavBar';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import repositoryFactory from '../repositories/repository-factory';
 
@@ -40,8 +39,6 @@ export function Blogs() {
 
   return (
     <>
-      <TopNavBar />
-
       <Accordion alwaysOpen>
         {blogData.map((post) => {
           return (

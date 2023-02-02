@@ -10,7 +10,6 @@ import TopNavBar from '../components/TopNavBar';
 export function Home() {
   return (
     <>
-      <TopNavBar/>
       <p>Home</p>
     </>
   );
