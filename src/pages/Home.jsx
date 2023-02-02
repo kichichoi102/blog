@@ -1,4 +1,5 @@
 import React from 'react';
+import TopNavBar from '../components/TopNavBar';
 
 // [TODO]: https://jsonplaceholder.typicode.com/
 // implement fake blog posts
@@ -7,5 +8,10 @@ import React from 'react';
  * @return {jsx}
  */
 export function Home() {
-  return <p className='text-3xl font-bold underline'>home</p>;
+  return (
+    <>
+      <TopNavBar/>
+      <p>Home</p>
+    </>
+  );
 }

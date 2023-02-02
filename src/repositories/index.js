@@ -1,3 +1,3 @@
-export * from './base-repository'
-export * from './client'
-export * from './repository-factory'
+export * from './base-repository';
+export * from './client';
+export * from './repository-factory';

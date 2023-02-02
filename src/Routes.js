@@ -1,17 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, Blogs, Contacts } from './pages';
+import { Home, Blogs, Contacts, Comments, NotFound } from './pages';
 import React from 'react';
 
 /**
  * @return {Routes}
  */
-function AppRoutes () {
+function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path='Blogs' element={<Blogs />} />
-        <Route path='Contacts' element={<Contacts />} />
+        <Route path='blogs' element={<Blogs />} />
+        <Route path='contacts' element={<Contacts />} />
+        <Route path='comments' element={<Comments />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
