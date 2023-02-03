@@ -8,10 +8,7 @@ export default function CommentsList(postId) {
   const navigate = useNavigate();
   const commentRepository = repositoryFactory.get('comments');
 
-  async function fetchCommentData(id = null) {
-    if (!id) {
-      navigate('/NotFound');
-    }
+  async function fetchCommentData(id) {
     const comment = await commentRepository.customRequestAsync('GET', { postId: id });
     if (comment.length == 0) {
       navigate('/NotFound');

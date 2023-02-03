@@ -11,10 +11,6 @@ export function Comments() {
 
   const postId = searchParams.get('id');
 
-  if (!postId) {
-    navigate('/blogs');
-  }
-
   async function fetchPostData() {
     const postRepository = repositoryFactory.get('posts');
     setPostData(await postRepository.getPostAsync(postId));
