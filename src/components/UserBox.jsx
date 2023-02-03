@@ -12,7 +12,6 @@ export default function UserBox() {
 
   useEffect(() => {
     getContactData();
-    console.log(contactData);
   }, []);
 
   return (
