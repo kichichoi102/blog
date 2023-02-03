@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Contacts, NotFound } from './pages';
-import Blogs from './features/blogs/components/Blogs';
-import Comments from './features/comments/components/Comments';
+import { Comments } from './features/comments';
+import { Blogs } from './features/blogs';
 import React from 'react';
 
 /**

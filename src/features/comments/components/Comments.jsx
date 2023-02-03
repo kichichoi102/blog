@@ -4,7 +4,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import repositoryFactory from '../../../repositories/repository-factory';
 import CommentsList from './CommentsList';
 
-export default function Comments() {
+export function Comments() {
   const [postData, setPostData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
