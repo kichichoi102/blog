@@ -1,18 +1,13 @@
 import Accordion from 'react-bootstrap/Accordion';
-import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import repositoryFactory from '../repositories/repository-factory';
+import { useNavigate } from 'react-router-dom';
+import repositoryFactory from '../../../repositories/repository-factory';
+import ViewCommentButton from './ViewCommentButton';
 
-/**
- * @return {jsx}
- */
-export function Blogs() {
+export default function BlogList(blogId = null) {
   const [blogData, setBlogData] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
-  const postId = searchParams.get('id');
   const blogRepository = repositoryFactory.get('posts');
 
   async function fetchBlogData(id = null) {
@@ -29,12 +24,8 @@ export function Blogs() {
     setBlogData(data);
   }
 
-  function viewComments(postId) {
-    navigate(`/comments?id=${postId}`);
-  }
-
   useEffect(() => {
-    fetchBlogData(postId);
+    fetchBlogData(blogId.blogId);
   }, []);
 
   return (
@@ -50,9 +41,10 @@ export function Blogs() {
                 <Accordion.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
                   {post.body}
                   <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Button variant='primary' onClick={() => viewComments(post.id)} style={{ maxWidth: '10em' }}>
+                    <ViewCommentButton postId={post.id} />
+                    {/* <Button variant='primary' onClick={() => viewComments(post.id)} style={{ maxWidth: '10em' }}>
                       View Comment
-                    </Button>
+                    </Button> */}
                   </div>
                 </Accordion.Body>
               </Accordion.Item>
