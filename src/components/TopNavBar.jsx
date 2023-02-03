@@ -11,7 +11,7 @@ export default function TopNavBar() {
         <Nav.Link href='/'>Blogs</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href='/contacts'>Profile</Nav.Link>
+        <Nav.Link href='/profile'>Profile</Nav.Link>
       </Nav.Item>
     </Nav>
   );

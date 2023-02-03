@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Post from '../../../components/Post';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import repositoryFactory from '../../../repositories/repository-factory';
+import Post from './Post';
 import CommentsList from './CommentsList';
 
 export function Comments() {

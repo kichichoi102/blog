@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import UserIcon from './UserIcon';
 
 export default function Post({ title, body, userId }) {
   return (
