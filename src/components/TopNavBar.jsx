@@ -6,19 +6,12 @@ import React from 'react';
  */
 export default function TopNavBar() {
   return (
-    <Nav
-      justify
-      variant="tabs"
-      defaultActiveKey="/home"
-    >
+    <Nav justify variant='tabs' defaultActiveKey='/blogs'>
       <Nav.Item>
-        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href='/'>Blogs</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/blogs">Blogs</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/contacts">Contacts</Nav.Link>
+        <Nav.Link href='/contacts'>Profile</Nav.Link>
       </Nav.Item>
     </Nav>
   );
