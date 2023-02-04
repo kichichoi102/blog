@@ -42,9 +42,6 @@ export default function BlogList(blogId = null) {
                   {post.body}
                   <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <ViewCommentButton postId={post.id} />
-                    {/* <Button variant='primary' onClick={() => viewComments(post.id)} style={{ maxWidth: '10em' }}>
-                      View Comment
-                    </Button> */}
                   </div>
                 </Accordion.Body>
               </Accordion.Item>
