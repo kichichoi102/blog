@@ -15,7 +15,7 @@ export function PageNumberBar(params) {
   // let first = 1;
   // let last = totalRows > ROWMAX ? ROWMAX : totalRows;
 
-  function setPageItems(first, last) {
+  function getPageItems(first, last) {
     const itemsArray = [];
     for (let currPageIndex = first; currPageIndex <= last; currPageIndex++) {
       itemsArray.push(
@@ -35,19 +35,19 @@ export function PageNumberBar(params) {
 
   function changePage(pageNumber) {
     setActive(pageNumber);
-    setItems(setPageItems(first, last));
+    setItems(getPageItems(first, last));
   }
 
   function goPrevious() {
     if (active-1 >= 1) {
       setActive(active - 1);
       console.log(active);
-      setItems(setPageItems(first, last));
+      setItems(getPageItems(first, last));
       const middle = Math.ceil((parseInt(items[ROWMAX - 1].key) + parseInt(items[0].key)) / 2);
       if (active <= middle) {
         setFirst((active - Math.floor(ROWMAX / 2) < 1) ? 1 : active - Math.floor(ROWMAX / 2));
         setLast((active + Math.floor(ROWMAX / 2) > totalRows) ? totalRows : active + Math.floor(ROWMAX / 2));
-        setItems(setPageItems(first, last));
+        setItems(getPageItems(first, last));
       }
     }
   }
@@ -55,19 +55,19 @@ export function PageNumberBar(params) {
     if (active+1 <= totalRows) {
       setActive(active + 1);
       console.log(active);
-      setItems(setPageItems(first, last));
+      setItems(getPageItems(first, last));
       const middle = Math.ceil((parseInt(items[ROWMAX - 1].key) + parseInt(items[0].key)) / 2);
       console.log(middle);
       if (active >= middle) {
         setFirst((active - Math.floor(ROWMAX / 2) < 1) ? 1 : active - Math.floor(ROWMAX / 2));
         setLast((active + Math.floor(ROWMAX / 2) > totalRows) ? totalRows : active + Math.floor(ROWMAX / 2));
-        setItems(setPageItems(first, last));
+        setItems(getPageItems(first, last));
       }
     }
   }
 
   useEffect(() => {
-    const dsds = setPageItems(first, last);
+    const dsds = getPageItems(first, last);
     setItems(dsds);
   }, []);
 
