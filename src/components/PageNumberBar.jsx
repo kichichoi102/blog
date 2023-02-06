@@ -1,5 +1,5 @@
 import Pagination from 'react-bootstrap/Pagination';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 
 export function PageNumberBar(params) {
   const ROWMAX = 5; // Default items in page number bar
@@ -7,13 +7,10 @@ export function PageNumberBar(params) {
   const itemsPerPage = params.params.itemsPerPage ?? 10; // Default items per page
   const totalRows = totalItems / itemsPerPage;
 
-  const [active, setActive] = useState(1);
+  const [isActive, setIsActive] = useState(1);
   const [items, setItems] = useState([]);
   const [first, setFirst] = useState(1);
   const [last, setLast] = useState(totalRows > ROWMAX ? ROWMAX : totalRows);
-  // const items = [];
-  // let first = 1;
-  // let last = totalRows > ROWMAX ? ROWMAX : totalRows;
 
   function getPageItems(first, last) {
     const itemsArray = [];
@@ -21,9 +18,9 @@ export function PageNumberBar(params) {
       itemsArray.push(
           <Pagination.Item
             key={currPageIndex}
-            active={currPageIndex === active}
+            active={currPageIndex === isActive}
             onClick={() => {
-              changePage(currPageIndex);
+              setIsActive(currPageIndex);
             }}
           >
             {currPageIndex}
@@ -33,35 +30,31 @@ export function PageNumberBar(params) {
     return itemsArray;
   }
 
-  function changePage(pageNumber) {
-    setActive(pageNumber);
-    setItems(getPageItems(first, last));
-  }
+  // Workaround for isActive taking time to update
+  useEffect(() => {
+    const newItems = getPageItems(first, last);
+    console.log(newItems);
+    setItems(newItems);
+  }, [isActive, first, last]);
 
   function goPrevious() {
-    if (active-1 >= 1) {
-      setActive(active - 1);
-      console.log(active);
-      setItems(getPageItems(first, last));
+    if (isActive > 1) {
+      setIsActive(isActive - 1);
+      console.log(isActive);
       const middle = Math.ceil((parseInt(items[ROWMAX - 1].key) + parseInt(items[0].key)) / 2);
-      if (active <= middle) {
-        setFirst((active - Math.floor(ROWMAX / 2) < 1) ? 1 : active - Math.floor(ROWMAX / 2));
-        setLast((active + Math.floor(ROWMAX / 2) > totalRows) ? totalRows : active + Math.floor(ROWMAX / 2));
-        setItems(getPageItems(first, last));
+      if (isActive <= middle) {
+        setFirst(isActive - Math.floor(ROWMAX / 2) < 1 ? 1 : isActive - Math.floor(ROWMAX / 2));
+        setLast(isActive + Math.floor(ROWMAX / 2) > totalRows ? totalRows : isActive + Math.floor(ROWMAX / 2));
       }
     }
   }
   function goNext() {
-    if (active+1 <= totalRows) {
-      setActive(active + 1);
-      console.log(active);
-      setItems(getPageItems(first, last));
+    if (isActive < totalRows) {
+      setIsActive(isActive + 1);
       const middle = Math.ceil((parseInt(items[ROWMAX - 1].key) + parseInt(items[0].key)) / 2);
-      console.log(middle);
-      if (active >= middle) {
-        setFirst((active - Math.floor(ROWMAX / 2) < 1) ? 1 : active - Math.floor(ROWMAX / 2));
-        setLast((active + Math.floor(ROWMAX / 2) > totalRows) ? totalRows : active + Math.floor(ROWMAX / 2));
-        setItems(getPageItems(first, last));
+      if (isActive >= middle) {
+        setFirst(isActive - Math.floor(ROWMAX / 2) < 1 ? 1 : isActive - Math.floor(ROWMAX / 2));
+        setLast(isActive + Math.floor(ROWMAX / 2) > totalRows ? totalRows : isActive + Math.floor(ROWMAX / 2));
       }
     }
   }
@@ -76,12 +69,14 @@ export function PageNumberBar(params) {
       <div style={{ zIndex: '99', position: 'fixed', bottom: '10px' }}>
         <Pagination>
           <Pagination.Prev
+            disabled={isActive==1}
             onClick={() => {
               goPrevious();
             }}
           />
           {items}
           <Pagination.Next
+            disabled={isActive==totalRows}
             onClick={() => {
               goNext();
             }}

@@ -12,7 +12,7 @@ export function TopNavBar() {
   return (
     <Navbar key={false} bg='light' expand={false} className='mb-3'>
       <Container fluid>
-        <Navbar.Brand href='#'>Blog</Navbar.Brand>
+        <Navbar.Brand href='/'>Blog</Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-false`} />
         <Navbar.Offcanvas id={`offcanvasNavbar-expand-false`} aria-labelledby={`offcanvasNavbarLabel-expand-false`} placement='end' scroll={true} backdrop={false}>
           <Offcanvas.Header closeButton>
