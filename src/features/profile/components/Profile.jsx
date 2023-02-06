@@ -5,6 +5,7 @@ import React from 'react';
 import UserProfileBox from './UserProfileBox';
 import ProfileDetails from './ProfileDetails';
 import SocialHandles from './SocialHandles';
+import Posts from './Posts';
 
 export function Profile() {
   return (
@@ -19,8 +20,11 @@ export function Profile() {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <Col>
+          <Col md="auto">
             <SocialHandles />
+          </Col>
+          <Col>
+            <Posts />
           </Col>
         </Row>
       </Container>
