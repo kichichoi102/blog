@@ -25,6 +25,7 @@ export default function ProfileDetails() {
 
   return (
     <Card>
+      <Card.Header>Profile Details</Card.Header>
       <ListGroup variant='flush' style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
         <ListGroup.Item>Full Name: {contactData.name}</ListGroup.Item>
         <ListGroup.Item>Email: {contactData.email}</ListGroup.Item>

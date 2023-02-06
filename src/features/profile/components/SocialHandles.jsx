@@ -23,6 +23,7 @@ export default function SocialHandles() {
 
   return (
     <Card style={{ width: '20rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
+      <Card.Header>Social Handles</Card.Header>
       <ListGroup variant='flush'>
         {Object.entries(socials).map(([key, value]) => {
           return (

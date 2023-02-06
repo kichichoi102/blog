@@ -11,20 +11,34 @@ export function Profile() {
   return (
     <>
       <Container>
-        <Row className="justify-content-md-center" style={{ paddingBottom: '1rem' }}>
-          <Col md="auto">
-            <UserProfileBox />
+        <Row>
+          <Col>
+            <Container>
+              <Row className='justify-content-md-center' style={{ paddingBottom: '1rem' }}>
+                <Col md='auto'>
+                  <UserProfileBox />
+                </Col>
+              </Row>
+              <Row className='justify-content-md-center' style={{ paddingBottom: '1rem' }}>
+                <Col md='auto'>
+                  <SocialHandles />
+                </Col>
+              </Row>
+            </Container>
           </Col>
           <Col>
-            <ProfileDetails />
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col md="auto">
-            <SocialHandles />
-          </Col>
-          <Col>
-            <Posts />
+            <Container style={{ paddingBottom: '1rem' }}>
+              <Row className='justify-content-md-center' style={{ paddingBottom: '1rem' }}>
+                <Col>
+                  <ProfileDetails />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Posts />
+                </Col>
+              </Row>
+            </Container>
           </Col>
         </Row>
       </Container>
