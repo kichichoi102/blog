@@ -3,17 +3,12 @@ import Card from 'react-bootstrap/Card';
 
 export default function Post({ title, body, userId }) {
   return (
-    <Card>
+    <Card style={{ paddingBottom: '1rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
       <Card.Header>
         Title: {title}
-        {/* <div className='circle'>
-          <UserIcon />
-        </div> */}
       </Card.Header>
       <Card.Body>
-        {/* <Card.Title>{{ data.title }}</Card.Title> */}
         <Card.Text>Body: {body}</Card.Text>
-        {/* <Button variant='primary'>Go somewhere</Button> */}
       </Card.Body>
     </Card>
   );

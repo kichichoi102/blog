@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Card from 'react-bootstrap/Card';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { PageNumberBar } from '../../../components';
 import repositoryFactory from '../../../repositories/repository-factory';
 import Post from './Post';
 import CommentsList from './CommentsList';
@@ -24,9 +24,11 @@ export function Comments() {
   return (
     <>
       <p>Comments Component</p>
-      <Post title={postData.title} body={postData.body} userId={postData.userId} />
-      <CommentsList postId={postId} />
-      <PageNumberBar />
+      <Card style={{ width: '90%', margin: 'auto', border: '0' }}>
+        <Post title={postData.title} body={postData.body} userId={postData.userId} />
+        <br />
+        <CommentsList postId={postId} />
+      </Card>
     </>
   );
 }
