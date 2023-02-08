@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import repositoryFactory from '../../../repositories/repository-factory';
@@ -23,10 +26,14 @@ export default function Posts() {
         {posts.map((post) => {
           return (
             <ListGroup.Item key={post.id} className='d-flex justify-content-between align-items-start'>
-              <div className='ms-2 me-auto'>
-                <img src='https://cdn-icons-png.flaticon.com/512/5028/5028066.png' style={{ margin: '0', position: 'absolute', height: '30px' }} />
-              </div>
-              <div>{post.body}</div>
+              <Container fluid='md'>
+                <Row>
+                  <Col md='auto'>
+                    <img src='https://cdn-icons-png.flaticon.com/512/5028/5028066.png' style={{ margin: '0', height: '30px' }} />
+                  </Col>
+                  <Col>{post.body}</Col>
+                </Row>
+              </Container>
             </ListGroup.Item>
           );
         })}
