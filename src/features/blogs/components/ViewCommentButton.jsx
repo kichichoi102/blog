@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function ViewCommentButton(postId) {
+export default function ViewCommentButton(props) {
   const navigate = useNavigate();
   const [id, setId] = useState();
 
@@ -11,7 +11,7 @@ export default function ViewCommentButton(postId) {
   }
 
   useEffect(() => {
-    setId(postId.postId);
+    setId(props.postId);
   });
 
   return (

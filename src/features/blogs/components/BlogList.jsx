@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import repositoryFactory from '../../../repositories/repository-factory';
 import ViewCommentButton from './ViewCommentButton';
 
-export default function BlogList(blogId = null) {
+export default function BlogList(props = null) {
   const [blogData, setBlogData] = useState([]);
 
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function BlogList(blogId = null) {
   }
 
   useEffect(() => {
-    fetchBlogData(blogId.blogId)
+    fetchBlogData(props.blogId)
         .then((data) => {
           getUserName(data);
         });

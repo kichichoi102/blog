@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import repositoryFactory from '../../../repositories/repository-factory';
 
-export default function CommentsList(postId) {
+export default function CommentsList(props) {
   const [commentData, setCommentData] = useState([]);
   const navigate = useNavigate();
   const commentRepository = repositoryFactory.get('comments');
@@ -18,7 +18,7 @@ export default function CommentsList(postId) {
   }
 
   useEffect(() => {
-    fetchCommentData(postId.postId);
+    fetchCommentData(props.postId);
   }, []);
 
   return (
