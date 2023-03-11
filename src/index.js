@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-      <App />
+      <Auth0Provider
+        domain='dev-2vgvgs0lzyt4mp4x.us.auth0.com'
+        clientId='aeudEMpo1oiaNIfDeFv0DfpeGqXOuHpr'
+        authorizationParams={{
+          redirect_uri: 'http://localhost:3000/authorize',
+          audience: 'https://dev-2vgvgs0lzyt4mp4x.us.auth0.com/api/v2/',
+          scope: 'read:current_user update:current_user_metadata',
+        }}
+      >
+        <App />
+      </Auth0Provider>
     </React.StrictMode>,
 );
 
